@@ -83,6 +83,9 @@ public class ProtoBufCompiler {
 
 	public List<CompileError> compile(IFile file) throws IOException, InterruptedException {
 		IPath srcFolder = getJavaSourceFolderForFile(file);
+        if (isMavenStyleJavaSourceFolder(srcFolder)) {
+            return null;
+        }
 		if (srcFolder == null) {
 			ArrayList<CompileError> list = new ArrayList<CompileError>();
 			list.add(new CompileError(file.toString(), 0, 0, String.format(
@@ -150,10 +153,6 @@ public class ProtoBufCompiler {
         String parent = file.getParent();
         if (parent != null) {
             buffer.append(" --proto_path=").append(parent);
-        }
-        int index = parent.indexOf("\\src");
-        if (index > 0) {
-            buffer.append(" --proto_path=").append(parent.substring(0, index + 4));
         }
         buffer.append(" ").append(file);
 
