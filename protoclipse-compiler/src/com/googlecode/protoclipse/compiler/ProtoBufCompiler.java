@@ -147,7 +147,7 @@ public class ProtoBufCompiler {
         buffer.append(FileUtils.joinPaths(getCompilerPath(), PROTOC));
         buffer.append(
                 " --plugin=protoc-gen-as3=\""
-                        + FileUtils.joinPaths(getCompilerPath(), "protoc-gen-as3.exe")
+                        + FileUtils.joinPaths(getCompilerPath(), "protoc-gen-as3.bat")
                         + "\" --as3_out=").append(outputPath);
 
         String parent = file.getParent();
