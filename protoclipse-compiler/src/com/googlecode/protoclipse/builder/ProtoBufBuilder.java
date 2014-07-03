@@ -46,7 +46,6 @@ public class ProtoBufBuilder extends IncrementalProjectBuilder {
 			switch (delta.getKind()) {
 			case IResourceDelta.ADDED:
 				// handle added resource
-				compileProto(resource);
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
