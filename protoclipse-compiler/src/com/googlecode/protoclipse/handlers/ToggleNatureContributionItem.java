@@ -37,14 +37,17 @@ public class ToggleNatureContributionItem extends CompoundContributionItem {
 	}
 
 	private String getContributionItemLabel(ISelection selection) {
-		String label = Messages.getString("ToggleNatureContributionItem.toggle"); //$NON-NLS-1$
+		String label = Messages
+				.getString("ToggleNatureContributionItem.toggle"); //$NON-NLS-1$
 		IProject[] projects = getSelectedProjects(selection);
-		int projectsWithNature = countProjectsWithNature(projects);
-		if (projectsWithNature == projects.length) {
-			label = Messages.getString("ToggleNatureContributionItem.remove"); //$NON-NLS-1$
-		}
-		else if (projectsWithNature == 0) {
-			label = Messages.getString("ToggleNatureContributionItem.add"); //$NON-NLS-1$
+		if (projects != null) {
+			int projectsWithNature = countProjectsWithNature(projects);
+			if (projectsWithNature == projects.length) {
+				label = Messages
+						.getString("ToggleNatureContributionItem.remove"); //$NON-NLS-1$
+			} else if (projectsWithNature == 0) {
+				label = Messages.getString("ToggleNatureContributionItem.add"); //$NON-NLS-1$
+			}
 		}
 		return label;
 	}
